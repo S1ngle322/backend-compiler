@@ -1,7 +1,11 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
-const baseRoute = '/api/v1'
+const baseRoute = '/api/v1';
+
+export class DTO {
+  code: string;
+}
 
 @Controller(baseRoute)
 export class AppController {
@@ -14,6 +18,6 @@ export class AppController {
 
   @Post('/compute')
   async compute(): Promise<string> {
-    return await this.appService.codeChecker()
+    return await this.appService.compute();
   }
 }

@@ -5,25 +5,36 @@ import { DTO } from './app.controller';
 export class AppService {
   async codeChecker(): Promise<string> {
     const data = this.getSample();
-    let splited = data.code.split('};').join('')
-    console.log(splited)
-
-    // let splited2 = []
-    // for (let i = 0; i < splited.length; i++) {
-    //   if (splited[i].startsWith('type')) {
-    //     delete splited[i]
-    //   }
-    // }
-
+    let splited = data.code.split('\n').join('')
     //console.log(splited)
-    //console.log(splited2)
-    // for (let i = 0; i < splited2.length; i++) {
-    //   if (splited2[i].startsWith('type')) {
-    //     delete splited2[i]
-    //   }
-    // }
+    const typesIndexes = [] // if 'type' word matched then store the index of the first letter
+    const bracesIndexes = [] // find all pairs of braces
 
-    //console.log(splited2)
+    for (let i = 0; i < splited.length + 4; i++) {
+      if (
+          splited[i] === 't'
+          && splited[i + 1] === 'y'
+          && splited[i + 2] === 'p'
+          && splited[i + 3] === 'e'
+      ) {
+        typesIndexes.push(i)
+        let j = i
+        for (j; j < splited.length; j++) {
+          if (splited[j] === '}' && splited[j + 1] === ';') {
+            bracesIndexes.push(j + 1)
+            break
+          }
+        }
+      }
+    }
+    let result
+    for (let i = 0; i < typesIndexes.length; i++) { // clearing from types
+      result = splited.substring(typesIndexes[i], bracesIndexes[i])
+      console.log(result)
+    }
+
+    //console.log(result)
+
     return 'Checking syntax';
   }
 

@@ -19,7 +19,7 @@ export function EditorComponent() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                code: ` ${code}`
+                code: ` ${code} `
             })
         });
 

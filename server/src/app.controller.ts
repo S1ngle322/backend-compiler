@@ -11,13 +11,8 @@ export class DTO {
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Post('/check')
-  async codeCheck(): Promise<string> {
-    return await this.appService.codeChecker();
-  }
-
   @Post('/compute')
-  async compute(): Promise<string> {
-    return await this.appService.compute();
+  async compute(@Body() code: DTO): Promise<string> {
+    return await this.appService.compute(code.code);
   }
 }

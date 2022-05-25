@@ -1,11 +1,12 @@
 {
-  "name": "compiler-backend",
+  "name": "server",
   "version": "0.0.1",
   "description": "",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "kek": "ts-node src/deleteTypes.ts",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

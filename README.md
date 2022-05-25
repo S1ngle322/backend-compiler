@@ -1,9 +1,9 @@
 # Fypescript
 
 ## How to run
-1. Client
+1. Frontend
 ```
-cd client
+cd frontend
 npm i
 npm run start
 ```
